@@ -1,0 +1,381 @@
+{
+  "demo_scenarios": [
+    {
+      "id": "DEMO-Q01",
+      "name": "Direct Answer - Billing Terms & Credits",
+      "question": "What are the enterprise invoice payment terms and how do prorated downgrade credits work?",
+      "expected_status": "GROUNDED_ANSWER",
+      "expected_sources": [
+        "02_Billing_And_Refund_Policy.html"
+      ],
+      "expected_facts": [
+        "net-45",
+        "prorated",
+        "credit",
+        "balance"
+      ],
+      "filters": null,
+      "relevant_sections": [
+        "Net-45 Payment Terms",
+        "Prorated Downgrade Credits"
+      ]
+    },
+    {
+      "id": "DEMO-Q02",
+      "name": "Paraphrase Retrieval - MFA Hardware Key Reset",
+      "question": "How do I reset my two-factor security key if I cannot sign in to corporate SSO?",
+      "expected_status": "GROUNDED_ANSWER",
+      "expected_sources": [
+        "01_Identity_Access_Manual.md"
+      ],
+      "expected_facts": [
+        "IT Service Desk",
+        "badge",
+        "bypass code",
+        "24 hours"
+      ],
+      "filters": null,
+      "relevant_sections": [
+        "MFA Hardware Security Token Reset"
+      ],
+      "notes": "Paraphrase: two-factor->MFA, security key->hardware token, sign in->authentication"
+    },
+    {
+      "id": "DEMO-Q03",
+      "name": "Version & Environment Conflict Detection",
+      "question": "What is the maximum API rate limit per minute and how many times do webhooks retry?",
+      "expected_status": "CONFLICT_DETECTED",
+      "expected_conflict_type": "VERSION_ENVIRONMENT_VARIANCE",
+      "expected_sources": [
+        "03_API_Gateway_Config_Legacy.txt",
+        "04_Release_Notes_2026_Q3.md"
+      ],
+      "expected_facts": [
+        "100",
+        "500",
+        "3",
+        "5",
+        "burst"
+      ],
+      "filters": null,
+      "relevant_sections": [
+        "RATE LIMITS",
+        "WEBHOOK RETRY",
+        "API Rate Limits",
+        "Webhook Delivery"
+      ]
+    },
+    {
+      "id": "DEMO-Q04",
+      "name": "PDF Retrieval - S3 AccessDenied & Upload Limit",
+      "question": "How do I fix an S3 403 AccessDenied error and what is the maximum single upload size?",
+      "expected_status": "GROUNDED_ANSWER",
+      "expected_sources": [
+        "05_Cloud_Storage_Troubleshooting.pdf"
+      ],
+      "expected_facts": [
+        "AccessDenied",
+        "IAM",
+        "bucket policy",
+        "50 GB"
+      ],
+      "filters": null,
+      "relevant_sections": [
+        "403 AccessDenied",
+        "Storage Upload Limits"
+      ]
+    },
+    {
+      "id": "DEMO-Q05",
+      "name": "Ambiguous Query Handling - Limit Inquiry",
+      "question": "What is the limit?",
+      "expected_status": "CLARIFICATION_NEEDED",
+      "filters": null
+    },
+    {
+      "id": "DEMO-Q06",
+      "name": "Unsupported Question - Travel Reimbursement",
+      "question": "What is the company policy on international business class flight reimbursements?",
+      "expected_status": "NOT_FOUND",
+      "expected_facts": [],
+      "filters": null
+    }
+  ],
+  "additional_evaluation_queries": [
+    {
+      "id": "EVAL-Q07",
+      "name": "Identity - Session Timeout Duration",
+      "question": "What is the enterprise session timeout policy and idle lockout duration?",
+      "expected_status": "GROUNDED_ANSWER",
+      "expected_sources": [
+        "01_Identity_Access_Manual.md"
+      ],
+      "expected_facts": [
+        "12 hours",
+        "30 minutes"
+      ],
+      "filters": null,
+      "relevant_sections": [
+        "Session Lifetimes"
+      ]
+    },
+    {
+      "id": "EVAL-Q08",
+      "name": "Network - VPN Split-Tunneling Routing",
+      "question": "How is VPN split-tunneling configured for remote employee connections?",
+      "expected_status": "GROUNDED_ANSWER",
+      "expected_sources": [
+        "01_Identity_Access_Manual.md"
+      ],
+      "expected_facts": [
+        "10.0.0.0/8",
+        "172.16.0.0/12",
+        "bypass"
+      ],
+      "filters": null,
+      "relevant_sections": [
+        "VPN Split-Tunneling"
+      ]
+    },
+    {
+      "id": "EVAL-Q09",
+      "name": "Billing - Overage Notification Thresholds",
+      "question": "When are overage billing alerts triggered and what is the extra unit rate?",
+      "expected_status": "GROUNDED_ANSWER",
+      "expected_sources": [
+        "02_Billing_And_Refund_Policy.html"
+      ],
+      "expected_facts": [
+        "80%",
+        "90%",
+        "100%",
+        "0.05"
+      ],
+      "filters": null,
+      "relevant_sections": [
+        "Overage Billing Alerts"
+      ]
+    },
+    {
+      "id": "EVAL-Q10",
+      "name": "Scoped Query - Production v2.4 API Limit",
+      "question": "What is the API rate limit in the Production v2.4 environment?",
+      "expected_status": "GROUNDED_ANSWER",
+      "expected_sources": [
+        "04_Release_Notes_2026_Q3.md"
+      ],
+      "expected_facts": [
+        "500",
+        "1,000"
+      ],
+      "filters": {
+        "environment": "Production-v2"
+      },
+      "relevant_sections": [
+        "API Rate Limits and Burst"
+      ]
+    },
+    {
+      "id": "EVAL-Q11",
+      "name": "Scoped Query - Legacy Gateway Rate Limit",
+      "question": "What was the legacy API gateway rate limit and retry count?",
+      "expected_status": "GROUNDED_ANSWER",
+      "expected_sources": [
+        "03_API_Gateway_Config_Legacy.txt"
+      ],
+      "expected_facts": [
+        "100",
+        "3"
+      ],
+      "filters": {
+        "version": "v1.8-Legacy"
+      },
+      "relevant_sections": [
+        "LEGACY API GATEWAY RATE LIMITS",
+        "WEBHOOK RETRY"
+      ]
+    },
+    {
+      "id": "EVAL-Q12",
+      "name": "Storage - KMS Customer Managed Key Rotation",
+      "question": "How often does KMS key rotation occur for encrypted cloud storage?",
+      "expected_status": "GROUNDED_ANSWER",
+      "expected_sources": [
+        "05_Cloud_Storage_Troubleshooting.pdf"
+      ],
+      "expected_facts": [
+        "365 days",
+        "1 year"
+      ],
+      "filters": null,
+      "relevant_sections": [
+        "KMS Key Rotation"
+      ]
+    },
+    {
+      "id": "EVAL-Q13",
+      "name": "Unsupported - Office Pet Policy",
+      "question": "What is the pet policy in the corporate office?",
+      "expected_status": "NOT_FOUND",
+      "expected_facts": [],
+      "filters": null
+    },
+    {
+      "id": "EVAL-Q14",
+      "name": "Modern - Staging Sandbox Rate Limiting",
+      "question": "What is the throttling quota for staging and sandbox applications?",
+      "expected_status": "GROUNDED_ANSWER",
+      "expected_sources": [
+        "04_Release_Notes_2026_Q3.md"
+      ],
+      "expected_facts": [
+        "50 requests per minute"
+      ],
+      "filters": null,
+      "relevant_sections": [
+        "API Rate Limits and Burst"
+      ]
+    },
+    {
+      "id": "EVAL-Q15",
+      "name": "Unsupported - Employee Annual Bonus",
+      "question": "What are the qualification requirements for the annual executive bonus payout?",
+      "expected_status": "NOT_FOUND",
+      "expected_facts": [],
+      "filters": null
+    },
+    {
+      "id": "EVAL-Q16",
+      "name": "Identity - Account Lockout Troubleshooting",
+      "question": "How many failed login attempts trigger an account lockout?",
+      "expected_status": "GROUNDED_ANSWER",
+      "expected_sources": [
+        "01_Identity_Access_Manual.md"
+      ],
+      "expected_facts": [
+        "5",
+        "15-minute"
+      ],
+      "filters": null,
+      "relevant_sections": [
+        "Troubleshooting Common Login"
+      ]
+    },
+    {
+      "id": "EVAL-Q17",
+      "name": "Unsupported (in-domain words) - SSO emergency phone",
+      "question": "What is the phone number for the SSO emergency administrator?",
+      "expected_status": "NOT_FOUND",
+      "expected_facts": [],
+      "filters": null,
+      "notes": "Shares words (SSO, emergency) with real passages but the fact does not exist."
+    },
+    {
+      "id": "EVAL-Q18",
+      "name": "Ambiguous - Timeout",
+      "question": "What is the timeout?",
+      "expected_status": "CLARIFICATION_NEEDED",
+      "expected_facts": [],
+      "filters": null
+    },
+    {
+      "id": "EVAL-Q19",
+      "name": "Filter excludes the answer - Invoice terms in TXT only",
+      "question": "What are the invoice payment terms?",
+      "expected_status": "NOT_FOUND",
+      "expected_facts": [],
+      "filters": {
+        "format": "TXT"
+      }
+    },
+    {
+      "id": "EVAL-Q20",
+      "name": "Paraphrase - Inactive session lock",
+      "question": "How long can a session stay inactive before it locks?",
+      "expected_status": "GROUNDED_ANSWER",
+      "expected_sources": [
+        "01_Identity_Access_Manual.md"
+      ],
+      "relevant_sections": [
+        "Session Lifetimes"
+      ],
+      "expected_facts": [
+        "30 minutes"
+      ],
+      "filters": null
+    },
+    {
+      "id": "EVAL-Q21",
+      "name": "Paraphrase - Money back on downgrade",
+      "question": "Can I get my money back if I move to a lower subscription tier?",
+      "expected_status": "GROUNDED_ANSWER",
+      "expected_sources": [
+        "02_Billing_And_Refund_Policy.html"
+      ],
+      "relevant_sections": [
+        "Prorated Downgrade Credits"
+      ],
+      "expected_facts": [
+        "cash refunds",
+        "account balance"
+      ],
+      "filters": null
+    },
+    {
+      "id": "EVAL-Q22",
+      "name": "Paraphrase - Clock out of sync",
+      "question": "What happens if my clock is out of sync with the NTP server?",
+      "expected_status": "GROUNDED_ANSWER",
+      "expected_sources": [
+        "01_Identity_Access_Manual.md"
+      ],
+      "relevant_sections": [
+        "Troubleshooting Common Login"
+      ],
+      "expected_facts": [
+        "180 seconds",
+        "InvalidAssertionTime"
+      ],
+      "filters": null,
+      "notes": "Hard paraphrase: 'out of sync' vs 'drifts more than 180 seconds'. Written before tuning; kept to measure lexical limits."
+    },
+    {
+      "id": "EVAL-Q23",
+      "name": "Direct - Legacy TLS minimum",
+      "question": "What TLS version does the legacy gateway require?",
+      "expected_status": "GROUNDED_ANSWER",
+      "expected_sources": [
+        "03_API_Gateway_Config_Legacy.txt"
+      ],
+      "relevant_sections": [
+        "CONFIGURATION AND TROUBLESHOOTING"
+      ],
+      "expected_facts": [
+        "TLS 1.2"
+      ],
+      "filters": null
+    },
+    {
+      "id": "EVAL-Q24",
+      "name": "Version-dependent - Failed webhook retention",
+      "question": "How long are failed webhook events kept for replay?",
+      "expected_status": "CONFLICT_DETECTED",
+      "expected_sources": [
+        "04_Release_Notes_2026_Q3.md",
+        "03_API_Gateway_Config_Legacy.txt"
+      ],
+      "relevant_sections": [
+        "Webhook Delivery",
+        "WEBHOOK RETRY"
+      ],
+      "expected_facts": [
+        "14 days",
+        "permanently discarded"
+      ],
+      "filters": null,
+      "expected_conflict_type": "VERSION_ENVIRONMENT_VARIANCE",
+      "notes": "Legacy discards failed events; v2.4 keeps them 14 days in a DLQ. Initially labelled GROUNDED; relabelled after review because the answer genuinely depends on version."
+    }
+  ],
+  "_labelling_notes": "Synthetic questions written by the team. expected_sources = documents that contain the answer; relevant_sections = substrings of the section headings that count as relevant passages for Hit@k/MRR; expected_facts = strings that must appear in the answer (word-boundary match). EVAL-Q17+ were added after the review; EVAL-Q20-Q24 were written before tuning and are kept even where they fail."
+}

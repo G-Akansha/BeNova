@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enterprise Billing and Refund Policy</title>
+</head>
+<body>
+    <h1>Enterprise Billing and Refund Policy</h1>
+    <p><strong>Document ID:</strong> DOC-BILL | <strong>Version:</strong> v3.0 | <strong>Effective Date:</strong> 2026-09-01 | <strong>Environment:</strong> Production</p>
+
+    <h2>1. Enterprise Invoice Net-45 Payment Terms</h2>
+    <p>All enterprise subscription agreements are billed on an annualized or monthly recurring basis according to the Enterprise Master Services Agreement (MSA). Enterprise invoices are generated on the 1st calendar day of each billing cycle.</p>
+    <p>Standard payment terms for enterprise accounts are strictly <strong>net-45 payment terms</strong>. The full invoice balance must be remitted within 45 calendar days from the invoice issuance date. Remittance must be submitted via Automated Clearing House (ACH), Fedwire electronic transfer, or corporate procurement credit card.</p>
+    <ul>
+        <li>Invoices unpaid after 45 days incur a late payment interest fee of 1.5% per month or the maximum rate permitted by law.</li>
+        <li>Accounts reaching 60 days overdue receive automated suspension warnings before API access restriction.</li>
+    </ul>
+
+    <h2>2. Prorated Downgrade Credits</h2>
+    <p>Customers may modify or downgrade their enterprise tier service levels at any point during an active contract term. When an enterprise account downgrades to a lower subscription tier, the billing engine calculates prorated downgrade credits.</p>
+    <ul>
+        <li><strong>Calculation Methodology:</strong> Downgrade credits are calculated on a strict pro-rata basis for the remaining unused days in the active billing period. The credit amount equals the difference between the daily rate of the higher tier and the lower tier multiplied by the remaining days in the cycle.</li>
+        <li><strong>Application of Credits:</strong> In accordance with corporate accounting policy, cash refunds or direct banking reversals are not issued for service downgrades. All prorated credits are automatically applied to the enterprise account balance and will be deducted from subsequent renewal invoices.</li>
+        <li>Credits remain valid on the account for up to 24 months from the date of issuance.</li>
+    </ul>
+
+    <h2>3. Overage Billing Alerts and Notification Rules</h2>
+    <p>To avoid unexpected usage expenses, the enterprise monitoring platform continuously tracks API call volume, bandwidth, and compute usage against contracted tier quotas.</p>
+    <ul>
+        <li><strong>80% Threshold Warning:</strong> An informational email alert is automatically dispatched to the designated billing contact when monthly quota consumption reaches 80%.</li>
+        <li><strong>90% Threshold Warning:</strong> A priority notification is sent to both technical and financial administrators recommending quota expansion.</li>
+        <li><strong>100% Threshold Notice:</strong> An urgent notification alerts account administrators that contracted limits have been reached and overage billing has commenced.</li>
+        <li><strong>Overage Calculation:</strong> Usage beyond contracted quotas is billed at the standard rate of $0.05 per additional 1,000 requests, consolidated onto the subsequent month's invoice.</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,4 @@
+Billing Policy Update (October 2026)
+
+1. Payment Terms
+Standard payment terms for enterprise accounts are net-30 payment terms. The full invoice balance must be remitted within 30 calendar days from the invoice issuance date.

@@ -1,0 +1,47 @@
+[
+  {
+    "doc_id": "DOC-IAM",
+    "title": "Identity & Access Management Manual",
+    "filename": "01_Identity_Access_Manual.md",
+    "format": "MD",
+    "version": "v2.3",
+    "effective_date": "2026-08-15",
+    "environment": "All"
+  },
+  {
+    "doc_id": "DOC-BILL",
+    "title": "Billing and Refund Policy",
+    "filename": "02_Billing_And_Refund_Policy.html",
+    "format": "HTML",
+    "version": "v3.0",
+    "effective_date": "2026-09-01",
+    "environment": "Production"
+  },
+  {
+    "doc_id": "DOC-GW-LEGACY",
+    "title": "API Gateway Configuration Guide (Legacy)",
+    "filename": "03_API_Gateway_Config_Legacy.txt",
+    "format": "TXT",
+    "version": "v1.8-Legacy",
+    "effective_date": "2025-04-10",
+    "environment": "Legacy-v1"
+  },
+  {
+    "doc_id": "DOC-REL-2026Q3",
+    "title": "Release Notes 2026 Q3 - API Gateway v2.4",
+    "filename": "04_Release_Notes_2026_Q3.md",
+    "format": "MD",
+    "version": "v2.4-Current",
+    "effective_date": "2026-10-01",
+    "environment": "Production-v2, Staging, Sandbox"
+  },
+  {
+    "doc_id": "DOC-S3-TSG",
+    "title": "Cloud Storage Troubleshooting & Operational Guide",
+    "filename": "05_Cloud_Storage_Troubleshooting.pdf",
+    "format": "PDF",
+    "version": "v2.1",
+    "effective_date": "2026-07-20",
+    "environment": "All"
+  }
+]

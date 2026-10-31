@@ -1,0 +1,11 @@
+.venv/
+node_modules/
+frontend/dist/
+__pycache__/
+*.pyc
+backend/.env
+backend/data/audit_log.jsonl
+*.tmp
+*.docx
+corrected_project_snapshot.txt
+project_snapshot.txt

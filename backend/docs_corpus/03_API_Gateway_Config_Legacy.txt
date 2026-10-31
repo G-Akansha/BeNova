@@ -1,0 +1,35 @@
+API Gateway Configuration Guide (Legacy Architecture)
+Document ID: DOC-GW-LEGACY
+Version: v1.8-Legacy
+Effective Date: 2025-04-10
+Environment Scope: Legacy-v1
+
+================================================================================
+1. LEGACY API GATEWAY RATE LIMITS
+================================================================================
+In the legacy API Gateway architecture (v1.8), rate limiting is enforced globally
+by the edge proxy layer across all client connections and tiers:
+
+- Enterprise API Rate Limit: Exactly 100 requests per minute across all tiers.
+- Per-IP Concurrency Limit: Maximum of 10 concurrent HTTP/1.1 connections.
+- Exceeding the 100 requests per minute limit triggers an HTTP 429 (Too Many Requests)
+  response with a static header 'Retry-After: 60'.
+- There is no burst capacity or burst token bucket in the v1.8 legacy deployment.
+
+================================================================================
+2. WEBHOOK RETRY SPECIFICATIONS (LEGACY)
+================================================================================
+For asynchronous event delivery and outbound webhook dispatches:
+- Webhook Retries: 3 attempts total (1 initial delivery + 2 retry attempts).
+- Retry Interval: Fixed 60-second delay between attempts.
+- If the endpoint fails to return an HTTP 2xx status code after 3 attempts,
+  the webhook event is permanently discarded to the legacy dead-letter drop.
+- Exponential backoff is NOT supported in legacy v1.8.
+
+================================================================================
+3. CONFIGURATION AND TROUBLESHOOTING NOTES
+================================================================================
+- Upstream gateway timeout is set to 30 seconds.
+- Clients must support TLS 1.2 minimum. Deprecated SSLv3 and TLS 1.0 are rejected.
+- To inspect legacy rate limits, review client headers: X-Legacy-RateLimit-Limit (100)
+  and X-Legacy-RateLimit-Remaining.
